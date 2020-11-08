@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teacher.TeacherController">
+   <children>
+      <TabPane prefHeight="545.0" prefWidth="769.0">
+         <tabs>
+            <Tab text="Student Details">
+               <content>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="770.0">
+                     <children>
+                        <Button layoutX="193.0" layoutY="26.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="289.0" text="EDIT STUDENT MARKS" />
+                        <Label layoutX="46.0" layoutY="123.0" text="INPUT THE ID OF THE STUDENT TO EDIT MARKS" />
+                        <TextField fx:id="studentId" layoutX="324.0" layoutY="119.0" prefHeight="25.0" prefWidth="188.0" />
+                        <Button layoutX="558.0" layoutY="119.0" mnemonicParsing="false" onAction="#loadData" text="Load Data" />
+                        <Label layoutX="46.0" layoutY="185.0" text="FIRST NAME :" />
+                        <Label layoutX="46.0" layoutY="242.0" text="LAST NAME  :" />
+                        <Label layoutX="46.0" layoutY="296.0" text="INPUT MARK 1 :" />
+                        <Label layoutX="46.0" layoutY="349.0" text="INPUT MARK 2 :" />
+                        <Label fx:id="fname" layoutX="147.0" layoutY="185.0" text="First name Here" />
+                        <Label fx:id="lname" layoutX="147.0" layoutY="242.0" text="Last Name Here" />
+                        <TextField fx:id="mark1" layoutX="147.0" layoutY="292.0" />
+                        <TextField fx:id="mark2" layoutX="147.0" layoutY="345.0" />
+                        <Label layoutX="46.0" layoutY="36.0" text="HELLO PROFESSOR!" />
+                        <Button layoutX="146.0" layoutY="393.0" mnemonicParsing="false" onAction="#inputMark" prefHeight="25.0" prefWidth="149.0" text="SUBMIT DATA" />
+                        <Label fx:id="submitFlag" layoutX="152.0" layoutY="441.0" />
+                        <Button fx:id="logoutButton" layoutX="149.0" layoutY="446.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="149.0" text="Logout" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Mark List">
+               <content>
+                  <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="230.0" prefHeight="517.0" prefWidth="559.0">
+                           <children>
+                              <TableView fx:id="markstable" prefHeight="517.0" prefWidth="540.0">
+                                <columns>
+                                  <TableColumn fx:id="mark1id" prefWidth="82.0" text="Mark1" />
+                                  <TableColumn fx:id="mark2id" prefWidth="97.0" text="Mark2" />
+                                    <TableColumn fx:id="mark3id" prefWidth="99.0" text="Mark3" />
+                                    <TableColumn fx:id="mark4id" prefWidth="95.0" text="Mark4" />
+                                    <TableColumn fx:id="mark5id" minWidth="0.0" prefWidth="87.0" text="Mark5" />
+                                    <TableColumn fx:id="mark6id" prefWidth="78.0" text="Mark6" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="studentID" layoutX="22.0" layoutY="67.0" prefHeight="25.0" prefWidth="191.0" />
+                        <Button fx:id="loadMarks" layoutX="20.0" layoutY="107.0" mnemonicParsing="false" onAction="#loadMarks" prefHeight="25.0" prefWidth="194.0" text="Load Marks" />
+                        <Label layoutX="90.0" layoutY="35.0" text="INPUT ID :" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

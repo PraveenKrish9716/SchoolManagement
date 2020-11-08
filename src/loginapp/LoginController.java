@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import students.StudentsController;
+import Teacher.TeacherController;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -18,9 +19,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+
 public class LoginController implements Initializable{
 
     LoginModel loginModel = new LoginModel();
+      static String uname;
 
         @FXML
         private Label dbstatus;
@@ -43,6 +46,13 @@ public class LoginController implements Initializable{
         }
         this.combobox.setItems(FXCollections.observableArrayList(option.values()));
     }
+//   public String uname = this.username.getText();
+//
+//
+//    public  String getUname() {
+//        return uname;
+//    }
+
     @FXML
     public void Login(ActionEvent event){
       try{
@@ -56,9 +66,15 @@ public class LoginController implements Initializable{
                       adminLogin();
                       break;
                   case "Student":
+                      System.out.println("Student");
                       studentLogin();
                       break;
+                  case "Teacher":
+                      System.out.println("Teacher");
+                      teacherLogin();
+                      break;
               }
+
           }
           else{
               this.loginStatus.setText("Wrong Credentials");
@@ -69,6 +85,9 @@ public class LoginController implements Initializable{
     }
     public void studentLogin(){
      try{
+         uname = this.username.getText();//new
+
+
          Stage userStage = new Stage();
          FXMLLoader loader = new FXMLLoader();
          Pane root = (Pane)loader.load(getClass().getResource("/students/studentFXML.fxml").openStream());
@@ -79,6 +98,7 @@ public class LoginController implements Initializable{
          userStage.setTitle("Student Dashboard");
          userStage.setResizable(false);
          userStage.show();
+
 
      } catch (IOException ex) {
          ex.printStackTrace();
@@ -101,4 +121,26 @@ public class LoginController implements Initializable{
             e.printStackTrace();
         }
     }
+
+    public void teacherLogin(){
+        try{
+            Stage teacherStage = new Stage();
+            FXMLLoader teacherLoader = new FXMLLoader();
+            Pane teacherroot = (Pane)teacherLoader.load(getClass().getResource("/Teacher/Teacher.fxml").openStream());
+
+            TeacherController teacherController = (TeacherController)teacherLoader.getController();
+            Scene scene = new Scene(teacherroot);
+            teacherStage.setScene(scene);
+            teacherStage.setTitle("Teacher Dashboard");
+            teacherStage.setResizable(false);
+            teacherStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String returnUname(){
+            return uname;
+    }//new
 }

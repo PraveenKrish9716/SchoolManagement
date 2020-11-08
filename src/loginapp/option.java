@@ -1,7 +1,7 @@
 package loginapp;
 
 public enum option {
-    Admin, Student;
+    Admin, Student, Teacher;
 
     private option() {
     }

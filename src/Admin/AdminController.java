@@ -4,13 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import dbUtil.dbConnection;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import loginapp.LoginController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +33,8 @@ public class AdminController implements Initializable {
     private TextField email;
     @FXML
     private DatePicker dob;
+    @FXML
+    private Button logoutButton;
     @FXML
     private TextField deleteId; //for deletion
     @FXML
@@ -104,6 +109,29 @@ public class AdminController implements Initializable {
         }
 
     }
+    @FXML
+    public  void logout(){
+        try{
+            Stage stage0 = (Stage)this.logoutButton.getScene().getWindow();
+            stage0.close();
+
+            Stage stage= new Stage();
+
+            FXMLLoader outloader = new FXMLLoader();
+            Pane outroot = (Pane)outloader.load(getClass().getResource("/loginapp/login.fxml"));
+
+            LoginController outController = (LoginController)outloader.getController();
+            Scene scene = new Scene(outroot);
+            stage.setScene(scene);
+            stage.setTitle("Login Dashboard");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @FXML
     public void clearFields(javafx.event.ActionEvent event){
         this.id.setText("");
